@@ -1,28 +1,64 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-
+import axios from 'axios';
+ 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+  constructor() {
+        super();
+        this.state = {
+          pairedWines: [],
+        };
+      }
+
+  componentdidMount() {
+    this.performSearch();
   }
-}
+
+  performSearch = () => {
+    axios.get('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/wine/pairing?food=filet mignon', {
+      headers: {
+        'X-Mashape-Key': 'ZJyTOCf5oumshDvTwSFk11paKhp9p1Ry2SsjsnigTi3aFLLBlX'
+      }
+    })
+      .then(response => {
+        this.setState( { 
+          pairedWines: response.data.pairedWines
+        });
+      })
+        .catch(error => {
+          console.log('Error fetching and parsing data', error);
+        });
+      }
+  
+
+  render() {
+    console.log(this.state.pairedWines);
+    return <div>
+        <button onClick = {
+        () => this.performSearch()}> Click here to call API 
+        </button> /}
+        </div>
+  };
+  }
+
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     recipe:[]
+  //   };
+  // }
+
+  // componentDidMount() {
+
+  // }
+
+  //   render() {
+  //     return (
+  //       <div className="App">
+  //        <header>Testing</header>
+  //       </div>
+  //     );
+  //   }
+  // }
 
 export default App;
