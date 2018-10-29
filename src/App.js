@@ -14,16 +14,17 @@ class App extends Component {
     this.performSearch();
   }
 
-  performSearch = () => {
-    axios.get('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/wine/pairing?food=filet mignon', {
+  performSearch = (query = 'chicken') => {
+    axios.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/wine/pairing?food=${query}`, {
       headers: {
         'X-Mashape-Key': 'ZJyTOCf5oumshDvTwSFk11paKhp9p1Ry2SsjsnigTi3aFLLBlX'
       }
     })
       .then(response => {
-        this.setState( { 
-          pairedWines: response.data.pairedWines
-        });
+        console.log(response);
+        // this.setState( { 
+        //   pairedWines: response.headers.body
+
       })
         .catch(error => {
           console.log('Error fetching and parsing data', error);
