@@ -21,15 +21,14 @@ class App extends Component {
       }
     })
       .then(response => {
-        console.log(response);
-        // this.setState( { 
-        //   pairedWines: response.headers.body
-
-      })
-        .catch(error => {
-          console.log('Error fetching and parsing data', error);
-        });
-      }
+        this.setState({ 
+            pairedWines: response.data.pairedWines
+         });  
+        })
+      .catch(error => {
+        console.log('Error fetching and parsing data', error);
+      });
+    }
   
 
   render() {
@@ -48,6 +47,8 @@ class App extends Component {
   //     recipe:[]
   //   };
   // }
+      // console.log(response);
+
 
   // componentDidMount() {
 
