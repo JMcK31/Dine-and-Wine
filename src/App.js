@@ -7,6 +7,13 @@ class App extends Component {
         super(props);
         this.state = {
           pairedWines: [],
+          pairingText: [],
+          productMatches: [{
+            title: '',
+            description: '',
+            price: ''
+                 
+          }]
         };
       }
 
@@ -21,7 +28,9 @@ class App extends Component {
     })
       .then(response => {
         this.setState({ 
-            pairedWines: response.data.pairedWines
+            pairedWines: response.data.pairedWines,
+            pairingText: response.data.pairingText,
+            productMatches: response.data.productMatches
          });  
         })
       .catch(error => {
@@ -32,12 +41,27 @@ class App extends Component {
 
   render() {
     console.log(this.state.pairedWines);
-    return <div>
-        <button onClick = {
-        () => this.performSearch()}> Click here to call API 
-        </button> /}
+      return ( 
+        <div className="App">
+          <button onClick = {
+            () => this.performSearch()}> Click here to call API 
+          </button> 
+            <ul>
+              <li>
+                {this.state.pairedWines}
+              </li>
+            </ul>
+            <p> 
+              {this.state.pairingText}
+            </p>
+            <ul>
+              <li>
+                {this.state.productMatches}
+              </li>
+            </ul>
         </div>
-  };
+      );
+    }
   }
 
   // constructor() {
