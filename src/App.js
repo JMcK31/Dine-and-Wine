@@ -3,8 +3,8 @@ import './App.css';
 import axios from 'axios';
  
 class App extends Component {
-  constructor() {
-        super();
+  constructor(props) {
+        super(props);
         this.state = {
           pairedWines: [],
         };
@@ -15,10 +15,9 @@ class App extends Component {
   }
 
   performSearch = (query = 'chicken') => {
-    axios.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/wine/pairing?food=${query}`, {
-      headers: {
-        'X-Mashape-Key': 'ZJyTOCf5oumshDvTwSFk11paKhp9p1Ry2SsjsnigTi3aFLLBlX'
-      }
+    axios
+    .get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/wine/pairing?food=${query}`, {
+      headers: {'X-Mashape-Key': 'ZJyTOCf5oumshDvTwSFk11paKhp9p1Ry2SsjsnigTi3aFLLBlX'}
     })
       .then(response => {
         this.setState({ 
