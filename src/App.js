@@ -6,12 +6,19 @@ class App extends Component {
   constructor(props) {
         super(props);
         this.state = {
-          pairedWines: [],
+          pairedWines: [ 
+            'red', 
+            'white'
+            
+          ],
           pairingText: [],
           productMatches: [{
-            title: '',
-            description: '',
-            price: ''
+            title: 'TEST',
+            description: 'Suggested wine description',
+            price: '$50',
+            score: '100',
+            imageUrl: 'https://fillmurray.com/g/200/300',
+            link: 'https://www.fillmurray.com/'
                  
           }]
         };
@@ -30,7 +37,11 @@ class App extends Component {
         this.setState({ 
             pairedWines: response.data.pairedWines,
             pairingText: response.data.pairingText,
-            productMatches: response.data.productMatches
+            title: response.data.productMatches.title,
+            descripton: response.data.description,
+            price: response.data.price,
+            imageUrl: response.data.imageUrl,
+            link: response.data.link
          });  
         })
       .catch(error => {
@@ -38,11 +49,13 @@ class App extends Component {
       });
     }
   
+    
 
   render() {
     console.log(this.state.pairedWines);
       return ( 
         <div className="App">
+           <h1>Wine Pair</h1>
           <button onClick = {
             () => this.performSearch()}> Click here to call API 
           </button> 
@@ -56,13 +69,18 @@ class App extends Component {
             </p>
             <ul>
               <li>
-                {this.state.productMatches}
+                {this.state.productMatches.description}
+                {this.state.productMatches.price}
+                {this.state.productMatches.score}
+                {this.state.imageUrl}
+                {this.state.link}
               </li>
             </ul>
         </div>
       );
     }
   }
+  
 
   // constructor() {
   //   super();
