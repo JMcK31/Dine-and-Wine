@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Jumbotron } from 'react-bootstrap';
 import './App.css';
 import axios from 'axios';
  
@@ -8,22 +9,23 @@ class App extends Component {
         this.state = {
           pairedWines: [ 
             'red', 
-            'white'
+            'white',
+            'sparkling'
             
           ],
           pairingText: [],
-          productMatches: [{
+          productMatches: {
             title: 'TEST',
             description: 'Suggested wine description',
             price: '$50',
             score: '100',
             imageUrl: 'https://fillmurray.com/g/200/300',
-            link: 'https://www.fillmurray.com/'
-                 
-          }]
+            link: 'https://www.fillmurray.com/'       
+          }
         };
       }
 
+  // get wine to pair with food
   componentdidMount() {
     this.performSearch();
   }
@@ -49,13 +51,19 @@ class App extends Component {
       });
     }
   
+  //Create paired wines variable 
+  //when user selects wine in li selected wine is entered in api callback to get wine description and callback for wine recomendations 
+  
     
 
   render() {
     console.log(this.state.pairedWines);
       return ( 
         <div className="App">
-           <h1>Wine Pair</h1>
+           <Jumbotron>
+             <h1>Wine Pair</h1>
+           </Jumbotron>   
+           
           <button onClick = {
             () => this.performSearch()}> Click here to call API 
           </button> 
@@ -67,15 +75,14 @@ class App extends Component {
             <p> 
               {this.state.pairingText}
             </p>
+
             <ul>
-              <li>
-                {this.state.productMatches.description}
-                {this.state.productMatches.price}
-                {this.state.productMatches.score}
-                {this.state.imageUrl}
-                {this.state.link}
-              </li>
+              <li>{this.state.productMatches.description}</li>
+              <li>{this.state.productMatches.score}</li>
+              <li>{this.state.imageUrl}</li>
+              <li>{this.state.link} */}</li>
             </ul>
+            
         </div>
       );
     }
