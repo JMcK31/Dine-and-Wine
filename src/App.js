@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { Jumbotron } from 'react-bootstrap';
+import {
+  Jumbotron,
+  Form,
+  FormGroup,
+  FormControl,
+  Button
+} from 'react-bootstrap';
 import './App.css';
 import axios from 'axios';
  
@@ -13,7 +19,9 @@ class App extends Component {
             'sparkling'
             
           ],
-          pairingText: ([], 'These are some great wines to pair with your food'),
+          pairingText: (
+            [], 'These are some great wines to pair with your food'),
+
           productMatches: {
             title: 'TEST',
             description: 'Suggested wine description',
@@ -39,6 +47,7 @@ class App extends Component {
         this.setState({ 
             pairedWines: response.data.pairedWines,
             pairingText: response.data.pairingText,
+           
             title: response.data.productMatches.title,
             descripton: response.data.description,
             price: response.data.price,
@@ -64,6 +73,16 @@ class App extends Component {
              <h1>Wine Pair</h1>
            </Jumbotron>   
            
+            <Form inline>
+              <FormGroup controlId="formInlineEmail">
+                <FormControl type="search" placeholder="search a food item to pair..." />
+              </FormGroup>
+                {' '}
+              <Button type="submit">
+                search
+              </Button>
+            </Form>
+
           <button onClick = {
             () => this.performSearch()}> Click here to call API 
           </button> 
