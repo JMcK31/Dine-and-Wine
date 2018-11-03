@@ -13,7 +13,7 @@ class App extends Component {
             'sparkling'
             
           ],
-          pairingText: [],
+          pairingText: ([], 'These are some great wines to pair with your food'),
           productMatches: {
             title: 'TEST',
             description: 'Suggested wine description',
@@ -79,8 +79,10 @@ class App extends Component {
             <ul>
               <li>{this.state.productMatches.description}</li>
               <li>{this.state.productMatches.score}</li>
-              <li>{this.state.imageUrl}</li>
-              <li>{this.state.link} */}</li>
+              <li>{this.state.productMatches.imageUrl}</li>
+              <li>{this.state.productMatches.link}</li>
+              <li>{this.state.productMatches.price}</li>
+              <li>{this.state.productMatches.score}</li>
             </ul>
             
         </div>
