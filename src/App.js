@@ -4,7 +4,8 @@ import {
   Form,
   FormGroup,
   FormControl,
-  Button
+  Button,
+  Grid
 } from 'react-bootstrap';
 import './App.css';
 import axios from 'axios';
@@ -14,24 +15,26 @@ class App extends Component {
         super(props);
         this.state = {
           pairedWines: [ 
-            'red', 
-            'white',
+            'red' , 
+            'white' ,
             'sparkling'
-            
           ],
+
           pairingText: (
             [], 'These are some great wines to pair with your food'),
 
-          productMatches: {
-            title: 'TEST',
-            description: 'Suggested wine description',
-            price: '$50',
-            score: '100',
-            imageUrl: 'https://fillmurray.com/g/200/300',
-            link: 'https://www.fillmurray.com/'       
-          }
+          productMatches: ( [
+          //   title: 'TEST',
+          //   description: 'Suggested wine description',
+          //   price: '$50',
+          //   score: '100',
+          //   imageUrl: 'https://fillmurray.com/g/200/300',
+          //   link: 'https://www.fillmurray.com/'       
+          ])
         };
       }
+  // const pairedWines = pairedWines.map((this.pairedWines) 
+
 
   // get wine to pair with food
   componentdidMount() {
@@ -69,33 +72,43 @@ class App extends Component {
     console.log(this.state.pairedWines);
       return ( 
         <div className="App">
-           <Jumbotron>
-             <h1>Wine Pair</h1>
-           </Jumbotron>   
-           
-            <Form inline>
-              <FormGroup controlId="formInlineEmail">
-                <FormControl type="search" placeholder="search a food item to pair..." />
-              </FormGroup>
-                {' '}
-              <Button type="submit">
-                search
-              </Button>
-            </Form>
+           <div className="jumbotron">
+             <Jumbotron>
+               <h1>Wine Pair</h1>
+             </Jumbotron>   
+           </div>
+
+          <Form inline>
+            <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+              <FormControl type="search" placeholder="search for a pairing..." />
+            </FormGroup>
+              {' '} 
+            <Button type="submit">
+              search
+            </Button>
+          </Form>
 
           <button onClick = {
             () => this.performSearch()}> Click here to call API 
           </button> 
-            <ul>
-              <li>
-                {this.state.pairedWines}
-              </li>
-            </ul>
+          
+          <Grid>
+            <div>
+              <ul className='wineResults'>
+                <h3>Wine Results</h3>
+                <li>
+                  {this.state.pairedWines}
+                </li>
+              </ul>
+            </div>
+
+            <h3>Info about the wine pairings</h3>
             <p> 
               {this.state.pairingText}
             </p>
 
             <ul>
+              <h3>Here's a recomendation</h3>
               <li>{this.state.productMatches.description}</li>
               <li>{this.state.productMatches.score}</li>
               <li>{this.state.productMatches.imageUrl}</li>
@@ -103,7 +116,7 @@ class App extends Component {
               <li>{this.state.productMatches.price}</li>
               <li>{this.state.productMatches.score}</li>
             </ul>
-            
+          </Grid>
         </div>
       );
     }
