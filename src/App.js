@@ -81,18 +81,24 @@ class App extends Component {
           <Grid>
 
             <div>
-              <ul>
-                <h3>Wine Results</h3>
-                <li>
-                  {this.state.pairedWines}
-                </li>
+              <h3>Varietal Parings</h3>
+              {this.state.pairedWines.map(w => {
+              return ( <ul>
+                <li key={w.id}>{w.title}</li>
               </ul>
+              )
+           })}
+         </div>
+           
 
+            <div>
               <h3>Info about the wine pairings</h3>
               <p> 
                 {this.state.pairingText}
               </p>
+            </div>
 
+            <div>
               <ul>
                 <h3>Here's a recomendation</h3>
                 <li>{this.state.productMatches.description}</li>
@@ -102,7 +108,6 @@ class App extends Component {
                 <li>{this.state.productMatches.price}</li>
                 <li>{this.state.productMatches.score}</li>
               </ul>
-
             </div>
           </Grid>
         </div>

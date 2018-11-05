@@ -1,11 +1,22 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  font-family: "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
+  
+  color: white;
+  font-weight: 650;
+  text-shadow: 0px 1px 5px black;
+  background-image: url(https://images.unsplash.com/photo-1538414779948-6e0fd9cb6790?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c782211f66254fb7d218119d3c5c1c03&auto=format&fit=crop&w=1355&q=80);
+  background-size: cover;
+  /* background: linear-gradient(to right, rgb(253, 249, 244), rgb(236, 219, 188)); */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1,h2: {
+  color: white;
 }
 
 code {
@@ -13,9 +24,13 @@ code {
     monospace;
 }
 
+
+/* Styles for Header*/
 .jumbotron {
-  background-image: .\img\katherine-chase-546457-unsplash (1).jpg;
+  background-image: src\img\headerImg.jpg;
 }
+
+/*Styles for Search */
 
 .searchBar {
   justify-content: center;
@@ -23,4 +38,8 @@ code {
 
 .form-inline .form-control {
   width: 25rem;
+}
+
+ul { 
+  list-style-type: none;
 }
