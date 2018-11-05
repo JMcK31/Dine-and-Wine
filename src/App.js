@@ -78,32 +78,32 @@ class App extends Component {
           <Header />
           <Search />
             
-
-          <button onClick = {
-            () => this.performSearch()}> Click here to call API 
-          </button> 
           <Grid>
-            <div></div>
-            <ul>
-              <h3>Wine Results</h3>
-              <li>
-                {this.state.pairedWines}
-              </li>
-            </ul>
-            <h3>Info about the wine pairings</h3>
-            <p> 
-              {this.state.pairingText}
-            </p>
 
-            <ul>
-              <h3>Here's a recomendation</h3>
-              <li>{this.state.productMatches.description}</li>
-              <li>{this.state.productMatches.score}</li>
-              <li>{this.state.productMatches.imageUrl}</li>
-              <li>{this.state.productMatches.link}</li>
-              <li>{this.state.productMatches.price}</li>
-              <li>{this.state.productMatches.score}</li>
-            </ul>
+            <div>
+              <ul>
+                <h3>Wine Results</h3>
+                <li>
+                  {this.state.pairedWines}
+                </li>
+              </ul>
+
+              <h3>Info about the wine pairings</h3>
+              <p> 
+                {this.state.pairingText}
+              </p>
+
+              <ul>
+                <h3>Here's a recomendation</h3>
+                <li>{this.state.productMatches.description}</li>
+                <li>{this.state.productMatches.score}</li>
+                <li>{this.state.productMatches.imageUrl}</li>
+                <li>{this.state.productMatches.link}</li>
+                <li>{this.state.productMatches.price}</li>
+                <li>{this.state.productMatches.score}</li>
+              </ul>
+
+            </div>
           </Grid>
         </div>
       );

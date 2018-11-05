@@ -13,6 +13,14 @@ code {
     monospace;
 }
 
-/* .jumbotron {
+.jumbotron {
   background-image: .\img\katherine-chase-546457-unsplash (1).jpg;
-} */
+}
+
+.searchBar {
+  justify-content: center;
+}
+
+.form-inline .form-control {
+  width: 25rem;
+}
