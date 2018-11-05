@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
+import Header from './Components/Header';
+import Search from './Components/Search';
 import {
-  Jumbotron,
-  Form,
-  FormGroup,
-  FormControl,
-  Button,
   Grid
 } from 'react-bootstrap';
 import './App.css';
@@ -15,26 +12,28 @@ class App extends Component {
         super(props);
         this.state = {
           pairedWines: [ 
-            'red' , 
-            'white' ,
+            'red ', 
+            'white ',
             'sparkling'
+            
           ],
 
           pairingText: (
-            [], 'These are some great wines to pair with your food'),
+            [], "Chardonnay, Pinot Noir, and Sauvignon Blanc are my top picks for Salmon. To decide on white or red, you should consider your seasoning and sauces. Chardonnay is a great friend to buttery, creamy dishes, while sauvignon blanc can complement herb or citrus-centric dishes. A light-bodied, low-tannin red such as the pinot noir goes great with broiled or grilled salmon. The Chehalem INOX Chardonnay with a 4.1 out of 5 star rating seems like a good match. It costs about 13 dollars per bottle."),
 
-          productMatches: ( [
-          //   title: 'TEST',
-          //   description: 'Suggested wine description',
-          //   price: '$50',
-          //   score: '100',
-          //   imageUrl: 'https://fillmurray.com/g/200/300',
-          //   link: 'https://www.fillmurray.com/'       
-          ])
+          productMatches: {
+            id: '',
+            title: 'TEST',
+            description: 'Suggested wine description',
+            price: '$50',
+            imageUrl: 'https://fillmurray.com/g/200/300',
+            averageRating: '',
+            ratingCount: '',
+            score: '100',
+            link: 'https://www.fillmurray.com/'       
+          }
         };
       }
-  // const pairedWines = pairedWines.map((this.pairedWines) 
-
 
   // get wine to pair with food
   componentdidMount() {
@@ -50,11 +49,15 @@ class App extends Component {
         this.setState({ 
             pairedWines: response.data.pairedWines,
             pairingText: response.data.pairingText,
-           
+            
+            id: response.data.productMatches.id,
             title: response.data.productMatches.title,
-            descripton: response.data.description,
-            price: response.data.price,
-            imageUrl: response.data.imageUrl,
+            descripton: response.data.productMatches.description,
+            price: response.data.procuctMatches.price,
+            imageUrl: response.data.productMatches.imageUrl,
+            averageRating: response.data.productMatches.averageRating,
+            ratingCount: response.data.productMatches.ratingCount,
+            score: response.data.productMatches.score,
             link: response.data.link
          });  
         })
@@ -72,36 +75,21 @@ class App extends Component {
     console.log(this.state.pairedWines);
       return ( 
         <div className="App">
-           <div className="jumbotron">
-             <Jumbotron>
-               <h1>Wine Pair</h1>
-             </Jumbotron>   
-           </div>
-
-          <Form inline>
-            <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-              <FormControl type="search" placeholder="search for a pairing..." />
-            </FormGroup>
-              {' '} 
-            <Button type="submit">
-              search
-            </Button>
-          </Form>
+          <Header />
+          <Search />
+            
 
           <button onClick = {
             () => this.performSearch()}> Click here to call API 
           </button> 
-          
           <Grid>
-            <div>
-              <ul className='wineResults'>
-                <h3>Wine Results</h3>
-                <li>
-                  {this.state.pairedWines}
-                </li>
-              </ul>
-            </div>
-
+            <div></div>
+            <ul>
+              <h3>Wine Results</h3>
+              <li>
+                {this.state.pairedWines}
+              </li>
+            </ul>
             <h3>Info about the wine pairings</h3>
             <p> 
               {this.state.pairingText}
@@ -121,28 +109,6 @@ class App extends Component {
       );
     }
   }
-  
 
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     recipe:[]
-  //   };
-  // }
-      // console.log(response);
-
-
-  // componentDidMount() {
-
-  // }
-
-  //   render() {
-  //     return (
-  //       <div className="App">
-  //        <header>Testing</header>
-  //       </div>
-  //     );
-  //   }
-  // }
 
 export default App;
