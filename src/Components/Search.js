@@ -13,8 +13,9 @@ class Search extends React.Component {
         <FormGroup>
           <FormControl type="search" placeholder="search for a pairing..." />
         </FormGroup>
-        <Button type="submit" onClick = {
-            () => this.performSearch()}> Search 
+        <Button type="submit" onClick ={
+          this.performSearch()}> 
+          Search
         </Button>
       </Form>
     );

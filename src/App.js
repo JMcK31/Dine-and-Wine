@@ -1,34 +1,35 @@
 import React, { Component } from 'react';
 import Header from './Components/Header';
-import Search from './Components/Search';
+// import Search from './Components/Search';
 import {
-  Grid
+  Form,
+  FormGroup,
+  FormControl,
+  Button
 } from 'react-bootstrap';
 import './App.css';
 import axios from 'axios';
+
  
 class App extends Component {
-  constructor(props) {
-        super(props);
+  constructor() {
+        super();
         this.state = {
           pairedWines: [ 
             'red ', 
             'white ',
             'sparkling'
+            
           ],
-
           pairingText: (
-            [], "Chardonnay, Pinot Noir, and Sauvignon Blanc are my top picks for Salmon. To decide on white or red, you should consider your seasoning and sauces. Chardonnay is a great friend to buttery, creamy dishes, while sauvignon blanc can complement herb or citrus-centric dishes. A light-bodied, low-tannin red such as the pinot noir goes great with broiled or grilled salmon. The Chehalem INOX Chardonnay with a 4.1 out of 5 star rating seems like a good match. It costs about 13 dollars per bottle."),
+            [], 'These are some great wines to pair with your food'),
 
-          productMatches: {
-            id: '',
+          productMatches: { value: [],
             title: 'TEST',
             description: 'Suggested wine description',
             price: '$50',
-            imageUrl: 'https://fillmurray.com/g/200/300',
-            averageRating: '',
-            ratingCount: '',
             score: '100',
+            imageUrl: 'https://fillmurray.com/g/200/300',
             link: 'https://www.fillmurray.com/'       
           }
         };
@@ -48,15 +49,11 @@ class App extends Component {
         this.setState({ 
             pairedWines: response.data.pairedWines,
             pairingText: response.data.pairingText,
-            productMatches: response.data.productMatches,
-            id: response.data.productMatches.id,
+           
             title: response.data.productMatches.title,
-            descripton: response.data.productMatches.description,
-            price: response.data.procuctMatches.price,
-            imageUrl: response.data.productMatches.imageUrl,
-            averageRating: response.data.productMatches.averageRating,
-            ratingCount: response.data.productMatches.ratingCount,
-            score: response.data.productMatches.score,
+            descripton: response.data.description,
+            price: response.data.price,
+            imageUrl: response.data.imageUrl,
             link: response.data.link
          });  
         })
@@ -73,43 +70,65 @@ class App extends Component {
   render() {
     console.log(this.state.pairedWines);
       return ( 
-
         <div className="App">
           <Header />
-          <Search />
+            <Form inline className='searchBar'>
+              <FormGroup>
+                <FormControl type="search" placeholder="search for a pairing..." />
+                </FormGroup>
+                <Button type="submit" onClick ={
+                  this.performSearch()}> Search
+                </Button>
+            </Form>
+
+          {/* <button onClick = {
+            () => this.performSearch()}> Search
+          </button>  */}
+            <ul>
+              <li>
+                {this.state.pairedWines}
+              </li>
+            </ul>
+
+            <p> 
+              {this.state.pairingText}
+            </p>
+
+            <ul>
+              <li>{this.state.productMatches.description}</li>
+              <li>{this.state.productMatches.score}</li>
+              <li>{this.state.productMatches.imageUrl}</li>
+              <li>{this.state.productMatches.link}</li>
+              <li>{this.state.productMatches.price}</li>
+              <li>{this.state.productMatches.score}</li>
+            </ul>
             
-          <Grid>
-
-            <div>
-              <h3>Varietal Parings</h3>
-              {this.state.pairedWines}
-           
-              </div>
-           
-
-            <div>
-              <h3>Info about the wine pairings</h3>
-              <p> 
-                {this.state.pairingText}
-              </p>
-            </div>
-
-            <div>
-              <ul>
-                <h3>Here's a recomendation</h3>
-                <li>{this.state.productMatches.description}</li>
-                <li>{this.state.productMatches.score}</li>
-                <li>{this.state.productMatches.imageUrl}</li>
-                <li>{this.state.productMatches.link}</li>
-                <li>{this.state.productMatches.price}</li>
-                <li>{this.state.productMatches.score}</li>
-              </ul>
-            </div>
-          </Grid>
         </div>
       );
     }
   }
+  
 
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     recipe:[]
+  //   };
+  // }
+      // console.log(response);
+
+
+  // componentDidMount() {
+
+  // }
+
+  //   render() {
+  //     return (
+  //       <div className="App">
+  //        <header>Testing</header>
+  //       </div>
+  //     );
+  //   }
+  // }
 
 export default App;
