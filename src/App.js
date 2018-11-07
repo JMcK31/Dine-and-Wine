@@ -15,7 +15,6 @@ class App extends Component {
             'red ', 
             'white ',
             'sparkling'
-            
           ],
 
           pairingText: (
@@ -49,7 +48,7 @@ class App extends Component {
         this.setState({ 
             pairedWines: response.data.pairedWines,
             pairingText: response.data.pairingText,
-            
+            productMatches: response.data.productMatches,
             id: response.data.productMatches.id,
             title: response.data.productMatches.title,
             descripton: response.data.productMatches.description,
@@ -74,6 +73,7 @@ class App extends Component {
   render() {
     console.log(this.state.pairedWines);
       return ( 
+
         <div className="App">
           <Header />
           <Search />
@@ -82,13 +82,9 @@ class App extends Component {
 
             <div>
               <h3>Varietal Parings</h3>
-              {this.state.pairedWines.map(w => {
-              return ( <ul>
-                <li key={w.id}>{w.title}</li>
-              </ul>
-              )
-           })}
-         </div>
+              {this.state.pairedWines}
+           
+              </div>
            
 
             <div>
