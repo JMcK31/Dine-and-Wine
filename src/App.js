@@ -11,12 +11,11 @@ class App extends Component {
   constructor(props) {
         super(props);
         this.state = {
-          pairedWines: [ 
-            'red ', 
+          pairedWines: { 
+            'red ',
             'white ',
             'sparkling'
-            
-          ],
+        },
 
           pairingText: (
             [], "Chardonnay, Pinot Noir, and Sauvignon Blanc are my top picks for Salmon. To decide on white or red, you should consider your seasoning and sauces. Chardonnay is a great friend to buttery, creamy dishes, while sauvignon blanc can complement herb or citrus-centric dishes. A light-bodied, low-tannin red such as the pinot noir goes great with broiled or grilled salmon. The Chehalem INOX Chardonnay with a 4.1 out of 5 star rating seems like a good match. It costs about 13 dollars per bottle."),
@@ -34,15 +33,17 @@ class App extends Component {
           }
         };
       }
+  
 
   // get wine to pair with food
   componentdidMount() {
     this.performSearch();
   }
 
-  performSearch = (query = 'chicken') => {
+
+  performSearch = (food = 'chicken') => {
     axios
-    .get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/wine/pairing?food=${query}`, {
+    .get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/wine/pairing?food=${food}`, {
       headers: {'X-Mashape-Key': 'ZJyTOCf5oumshDvTwSFk11paKhp9p1Ry2SsjsnigTi3aFLLBlX'}
     })
       .then(response => {
@@ -82,13 +83,14 @@ class App extends Component {
 
             <div>
               <h3>Varietal Parings</h3>
-              {this.state.pairedWines.map(w => {
-              return ( <ul>
-                <li key={w.id}>{w.title}</li>
-              </ul>
-              )
-           })}
-         </div>
+                
+                function pairedWines(props) {
+                  const pairedWines = props.pairedWines;
+                  const items = pairedWines.map((wine) =>
+                    <li>{wine}</li>
+                  );
+                } 
+            </div>
            
 
             <div>

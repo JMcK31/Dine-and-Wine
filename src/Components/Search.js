@@ -11,7 +11,7 @@ const Search = () => {
        
           <Form inline className='searchBar'>
             <FormGroup>
-              <FormControl type="search" placeholder="search for a pairing..." />
+              <FormControl type="search" placeholder="search for a pairing..."/>
             </FormGroup>
             {' '} 
             <Button type="submit" onClick = {

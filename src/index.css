@@ -15,6 +15,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+
 h1,h2: {
   color: white;
 }
@@ -27,7 +28,7 @@ code {
 
 /* Styles for Header*/
 .jumbotron {
-  background-image: src\img\headerImg.jpg;
+  background-color: rgb(97, 44, 44);
 }
 
 /*Styles for Search */
