@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+    Label,
     Form,
     FormGroup,
     FormControl,
@@ -9,6 +10,8 @@ import {
 class Search extends React.Component {
   render() {  
     return ( 
+      <div>
+      <Label><h2>Find a Wine to Match your Meal:</h2></Label>
       <Form inline className='searchBar'>
         <FormGroup>
           <FormControl type="search" placeholder="search for a pairing..." />
@@ -18,6 +21,7 @@ class Search extends React.Component {
           Search
         </Button>
       </Form>
+      </div>
     );
   }
 }

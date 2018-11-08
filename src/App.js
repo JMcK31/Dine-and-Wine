@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import Header from './Components/Header';
 // import Search from './Components/Search';
 import {
+  Label,
   Form,
   FormGroup,
   FormControl,
   Button
 } from 'react-bootstrap';
+
 import './App.css';
 import axios from 'axios';
 
@@ -15,26 +17,19 @@ class App extends Component {
   constructor() {
         super();
         this.state = {
-          pairedWines: [ 
-            'red ', 
-            'white ',
-            'sparkling'
-            
-          ],
-          pairingText: (
-            [], 'These are some great wines to pair with your food'),
-
-          productMatches: { value: [],
-            title: 'TEST',
-            description: 'Suggested wine description',
-            price: '$50',
-            score: '100',
-            imageUrl: 'https://fillmurray.com/g/200/300',
-            link: 'https://www.fillmurray.com/'       
-          }
-        };
+          pairedWines: [
+            {
+               wine: ''
+              },
+            { 
+              pairingText: '' 
+            },
+            { 
+              productMatches: ''
+             }
+          ]
+        }
       }
-
   // get wine to pair with food
   componentdidMount() {
     this.performSearch();
@@ -46,15 +41,16 @@ class App extends Component {
       headers: {'X-Mashape-Key': 'ZJyTOCf5oumshDvTwSFk11paKhp9p1Ry2SsjsnigTi3aFLLBlX'}
     })
       .then(response => {
+        console.log(response)
         this.setState({ 
             pairedWines: response.data.pairedWines,
             pairingText: response.data.pairingText,
-           
-            title: response.data.productMatches.title,
-            descripton: response.data.description,
-            price: response.data.price,
-            imageUrl: response.data.imageUrl,
-            link: response.data.link
+            productMatches: response.data.productMatches
+            // title: response.data.productMatches.title,
+            // descripton: response.data.description,
+            // price: response.data.price,
+            // imageUrl: response.data.imageUrl,
+            // link: response.data.link
          });  
         })
       .catch(error => {
@@ -72,14 +68,18 @@ class App extends Component {
       return ( 
         <div className="App">
           <Header />
-            <Form inline className='searchBar'>
-              <FormGroup>
-                <FormControl type="search" placeholder="search for a pairing..." />
-                </FormGroup>
-                <Button type="submit" onClick ={
-                  this.performSearch()}> Search
-                </Button>
-            </Form>
+          <div>
+          <Label><h2>Find a Wine to Match your Meal</h2></Label>
+          <Form inline className='searchBar'>
+            <FormGroup>
+              <FormControl type="search" placeholder="search for a pairing..." />
+            </FormGroup>
+            <Button type="submit" onClick ={
+              this.performSearch()}> 
+              Search
+            </Button>
+          </Form>
+          </div>
 
           {/* <button onClick = {
             () => this.performSearch()}> Search
@@ -95,12 +95,12 @@ class App extends Component {
             </p>
 
             <ul>
-              <li>{this.state.productMatches.description}</li>
-              <li>{this.state.productMatches.score}</li>
+              <li>{this.state.productMatches}</li>
+              {/* <li>{this.state.productMatches.score}</li>
               <li>{this.state.productMatches.imageUrl}</li>
               <li>{this.state.productMatches.link}</li>
               <li>{this.state.productMatches.price}</li>
-              <li>{this.state.productMatches.score}</li>
+              <li>{this.state.productMatches.score}</li> */}
             </ul>
             
         </div>
