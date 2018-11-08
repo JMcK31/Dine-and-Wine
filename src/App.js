@@ -43,9 +43,9 @@ class App extends Component {
       .then(response => {
         console.log(response)
         this.setState({ 
-            pairedWines: response.data.pairedWines,
-            pairingText: response.data.pairingText,
-            productMatches: response.data.productMatches
+          pairedWines: response.data.pairedWines,
+          pairingText: response.data.pairingText,
+          productMatches: response.data.productMatches
             // title: response.data.productMatches.title,
             // descripton: response.data.description,
             // price: response.data.price,
@@ -64,7 +64,7 @@ class App extends Component {
     
 
   render() {
-    console.log(this.state.pairedWines);
+    // let returnedWines = this.props.pairedWines;
       return ( 
         <div className="App">
           <Header />
