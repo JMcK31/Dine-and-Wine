@@ -14,30 +14,44 @@ import axios from 'axios';
 
  
 class App extends Component {
-  constructor() {
-        super();
-        this.state = {
-          pairedWines: [
-            {
-               wine: ''
-              },
-            { 
-              pairingText: '' 
-            },
-            { 
-              productMatches: ''
-             }
-          ]
-        }
+  constructor(props) {
+        super(props);
+         this.state = {
+           searchValue: '',
+          pairedWines: [ 
+            'red ', 
+            'white ',
+            'sparkling'
+            
+          ],
+          pairingText: (
+            [], 'These are some great wines to pair with your food'),
+
+          productMatches: [],
+            title: 'TEST',
+            description: 'Suggested wine description',
+            price: '$50',
+            score: '100',
+            imageUrl: 'https://fillmurray.com/g/200/300',
+            link: 'https://www.fillmurray.com/'       
+          
+        };
       }
-  // get wine to pair with food
+
+
   componentdidMount() {
     this.performSearch();
   }
 
-  performSearch = (query = 'chicken') => {
+  searchChange = e => {
+    this.setState({searchValue: e.target.value})
+  }
+
+  performSearch = (e) => {
+    e.preventDefault()
+
     axios
-    .get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/wine/pairing?food=${query}`, {
+    .get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/wine/pairing?food=${this.state.searchValue}`, {
       headers: {'X-Mashape-Key': 'ZJyTOCf5oumshDvTwSFk11paKhp9p1Ry2SsjsnigTi3aFLLBlX'}
     })
       .then(response => {
@@ -45,22 +59,18 @@ class App extends Component {
         this.setState({ 
           pairedWines: response.data.pairedWines,
           pairingText: response.data.pairingText,
-          productMatches: response.data.productMatches
-            // title: response.data.productMatches.title,
-            // descripton: response.data.description,
-            // price: response.data.price,
-            // imageUrl: response.data.imageUrl,
-            // link: response.data.link
+          productMatches: response.data.productMatches,
+          title: response.data.productMatches.title,
+          descripton: response.data.description,
+          price: response.data.price,
+          imageUrl: response.data.imageUrl,
+          link: response.data.link
          });  
         })
       .catch(error => {
         console.log('Error fetching and parsing data', error);
       });
     }
-  
-  //Create paired wines variable 
-  //when user selects wine in li selected wine is entered in api callback to get wine description and callback for wine recomendations 
-  
     
 
   render() {
@@ -72,18 +82,14 @@ class App extends Component {
           <Label><h2>Find a Wine to Match your Meal</h2></Label>
           <Form inline className='searchBar'>
             <FormGroup>
-              <FormControl type="search" placeholder="search for a pairing..." />
+              <FormControl type="search" placeholder="search for a pairing..." onChange={this.searchChange} />
             </FormGroup>
-            <Button type="submit" onClick ={
-              this.performSearch()}> 
+            <Button type="submit" onClick={this.performSearch}> 
               Search
             </Button>
           </Form>
           </div>
 
-          {/* <button onClick = {
-            () => this.performSearch()}> Search
-          </button>  */}
             <ul>
               <li>
                 {this.state.pairedWines}
@@ -95,12 +101,12 @@ class App extends Component {
             </p>
 
             <ul>
-              <li>{this.state.productMatches}</li>
-              {/* <li>{this.state.productMatches.score}</li>
+              <li>{this.state.productMatches.title}</li>
+              <li>{this.state.productMatches.score}</li>
               <li>{this.state.productMatches.imageUrl}</li>
               <li>{this.state.productMatches.link}</li>
               <li>{this.state.productMatches.price}</li>
-              <li>{this.state.productMatches.score}</li> */}
+              <li>{this.state.productMatches.score}</li>
             </ul>
             
         </div>
@@ -109,26 +115,5 @@ class App extends Component {
   }
   
 
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     recipe:[]
-  //   };
-  // }
-      // console.log(response);
-
-
-  // componentDidMount() {
-
-  // }
-
-  //   render() {
-  //     return (
-  //       <div className="App">
-  //        <header>Testing</header>
-  //       </div>
-  //     );
-  //   }
-  // }
 
 export default App;
