@@ -48,7 +48,6 @@ class App extends Component {
 
   performSearch = (e) => {
     e.preventDefault();
-    
     axios
       .get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/wine/pairing?food=${this.state.searchValue}`, {
       headers: {'X-Mashape-Key': 'ZJyTOCf5oumshDvTwSFk11paKhp9p1Ry2SsjsnigTi3aFLLBlX'}
@@ -56,7 +55,7 @@ class App extends Component {
       .then(response => {
         console.log(response)
         this.setState({ 
-          pairedWines: response.data.pairedWines,
+          pairedWines: response.data.pairedWines, 
           pairingText: response.data.pairingText,
           productMatches: response.data.productMatches,
           title: response.data.productMatches.title,
@@ -73,8 +72,8 @@ class App extends Component {
    
 
   render() {
-   const results = this.performSearch(this.state.searchValue);
-   const wines = results.map((wine) =>
+ 
+   const wines = this.state.pairedWines.map(wine =>
     <li>{wine}</li>
    );
 
