@@ -15,18 +15,18 @@ import axios from 'axios';
  
 class App extends Component {
   constructor(props) {
-        super(props);
-         this.state = {
-           searchValue: '',
+    super(props);
+      this.state = {
+        searchValue: '',
           pairedWines: [ 
             'red ', 
             'white ',
             'sparkling'
-            
-          ],
+            ],
           pairingText: (
-            [], 'These are some great wines to pair with your food'),
-
+            [], 
+            'These are some great wines to pair with your food'
+            ),
           productMatches: [],
             title: 'TEST',
             description: 'Suggested wine description',
@@ -34,7 +34,6 @@ class App extends Component {
             score: '100',
             imageUrl: 'https://fillmurray.com/g/200/300',
             link: 'https://www.fillmurray.com/'       
-          
         };
       }
 
@@ -48,10 +47,10 @@ class App extends Component {
   }
 
   performSearch = (e) => {
-    e.preventDefault()
-
+    e.preventDefault();
+    
     axios
-    .get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/wine/pairing?food=${this.state.searchValue}`, {
+      .get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/wine/pairing?food=${this.state.searchValue}`, {
       headers: {'X-Mashape-Key': 'ZJyTOCf5oumshDvTwSFk11paKhp9p1Ry2SsjsnigTi3aFLLBlX'}
     })
       .then(response => {
@@ -71,10 +70,14 @@ class App extends Component {
         console.log('Error fetching and parsing data', error);
       });
     }
-    
+   
 
   render() {
-    // let returnedWines = this.props.pairedWines;
+   const results = this.performSearch(this.state.searchValue);
+   const wines = results.map((wine) =>
+    <li>{wine}</li>
+   );
+
       return ( 
         <div className="App">
           <Header />
@@ -91,9 +94,7 @@ class App extends Component {
           </div>
 
             <ul>
-              <li>
-                {this.state.pairedWines}
-              </li>
+              {wines}
             </ul>
 
             <p> 
