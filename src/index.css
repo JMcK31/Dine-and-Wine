@@ -26,8 +26,10 @@ code {
 
 
 /* Styles for Header*/
-.jumbotron {
-  background-color: rgb(107, 39, 39);
+
+.header {
+  padding: 3em;
+  flex-wrap: unset;
 }
 
 /*Styles for Search */
@@ -42,4 +44,10 @@ code {
 
 ul { 
   list-style-type: none;
+}
+
+ul .wineList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }

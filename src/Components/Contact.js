@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormGroup, Label, Input } from 'reactstrap';
+import { FormGroup, Label } from 'react-bootstrap';
 
 class Contact extends React.Component {
 
@@ -13,17 +13,16 @@ class Contact extends React.Component {
        
           <FormGroup>
             <Label>Name</Label>
-            <Input type='text' />
+            {/* <Input type='text' /> */}
           </FormGroup>
           <FormGroup>
             <Label>Email</Label>
-            <Input type='text' />
+            {/* <Input type='text' /> */}
           </FormGroup>
           <FormGroup>
             <Label></Label>
-            <Input type='text' />
+            {/* <Input type='text' /> */}
           </FormGroup>
-     
       </div>
     );
   }

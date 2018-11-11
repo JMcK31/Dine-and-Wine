@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import Header from './Components/Header';
+import NavBar from './Components/NavBar';
+import Contact from './Components/Contact';
 // import Search from './Components/Search';
 import {
   Label,
   Form,
   FormGroup,
   FormControl,
-  Button
+  Button,
 } from 'react-bootstrap';
 
 import './App.css';
@@ -27,13 +30,16 @@ class App extends Component {
             [], 
             'These are some great wines to pair with your food'
             ),
-          productMatches: [],
-            title: 'TEST',
-            description: 'Suggested wine description',
-            price: '$50',
-            score: '100',
-            imageUrl: 'https://fillmurray.com/g/200/300',
-            link: 'https://www.fillmurray.com/'       
+            productMatches: [
+            {
+              title: 'TEST',
+              description: 'Suggested wine description',
+              price: '$50',
+              score: '100',
+              imageUrl: 'https://fillmurray.com/g/200/300',
+              link: 'https://www.fillmurray.com/'     
+            }
+          ]
         };
       }
 
@@ -50,19 +56,14 @@ class App extends Component {
     e.preventDefault();
     axios
       .get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/wine/pairing?food=${this.state.searchValue}`, {
-      headers: {'X-Mashape-Key': 'ZJyTOCf5oumshDvTwSFk11paKhp9p1Ry2SsjsnigTi3aFLLBlX'}
+      headers: {'X-Mashape-Key': 'ZJyTOCf5oumshDvTwSFk11paKhp9p1Ry2SsjsnigTi3aFLLBlX'},
     })
       .then(response => {
         console.log(response)
         this.setState({ 
           pairedWines: response.data.pairedWines, 
           pairingText: response.data.pairingText,
-          productMatches: response.data.productMatches,
-          title: response.data.productMatches.title,
-          descripton: response.data.description,
-          price: response.data.price,
-          imageUrl: response.data.imageUrl,
-          link: response.data.link
+          productMatches: response.data.productMatches
          });  
         })
       .catch(error => {
@@ -72,44 +73,58 @@ class App extends Component {
    
 
   render() {
- 
    const wines = this.state.pairedWines.map(wine =>
     <li>{wine}</li>
    );
 
+  //  const recommendation = this.state.productMatches.map(pair => <li>{pair}</li>);
       return ( 
-        <div className="App">
-          <Header />
-          <div>
-          <Label><h2>Find a Wine to Match your Meal</h2></Label>
-          <Form inline className='searchBar'>
-            <FormGroup>
-              <FormControl type="search" placeholder="search for a pairing..." onChange={this.searchChange} />
-            </FormGroup>
-            <Button type="submit" onClick={this.performSearch}> 
-              Search
-            </Button>
-          </Form>
-          </div>
+        <BrowserRouter>
+          <div className="App">
+            <Header />
+            <NavBar />
 
-            <ul>
-              {wines}
-            </ul>
-
-            <p> 
-              {this.state.pairingText}
-            </p>
-
-            <ul>
-              <li>{this.state.productMatches.title}</li>
-              <li>{this.state.productMatches.score}</li>
-              <li>{this.state.productMatches.imageUrl}</li>
-              <li>{this.state.productMatches.link}</li>
-              <li>{this.state.productMatches.price}</li>
-              <li>{this.state.productMatches.score}</li>
-            </ul>
+            <div>
+            <Label><h2>Find a Wine to Match your Meal</h2></Label>
+            <Form inline className='searchBar'>
+              <FormGroup>
+                <FormControl 
+                  type='search' 
+                  value={this.state.searchValue}
+                  placeholder='search for a pairing...' 
+                  onChange={this.searchChange} />
+              </FormGroup>
+              <Button type='submit' onClick={this.performSearch}> 
+                Search
+              </Button>
+            </Form>
             
-        </div>
+            </div>
+              <div className="wineList">
+                <ul>
+                  {wines}
+                </ul>
+              </div>             
+              <p> 
+                {this.state.pairingText}
+              </p>
+
+              <ul>
+                {this.state.productMatches.map(match => 
+                  <div>
+                    <li>Suggestion: {match.title}</li>
+                    <li>Score: {match.score}</li>
+                    <li><img src={match.imageUrl} alt='' href={match.link}/></li>
+                    <li>{match.link}</li>
+                    <li>Price: {match.price}</li>
+                  </div>
+                )}
+              </ul>
+              <Switch>
+             <Route path="./Components/Contact" component={Contact} />
+             </Switch>
+          </div>
+        </BrowserRouter>
       );
     }
   }
