@@ -20,6 +20,9 @@ const Header = () => (
           <Link to="/dishsearch">Dish Pairings</Link>
         </NavItem>
         <NavItem>
+          <Link to="/winerecommendation">Varietal Recommendation</Link>
+        </NavItem>
+        <NavItem>
           <Link to ='/Contact' activeStyle={{ background: 'tomato'}}>Contact</Link>
         </NavItem>
       </Nav>

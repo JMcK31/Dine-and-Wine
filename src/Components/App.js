@@ -4,6 +4,7 @@ import WinePairings from './WinePairings';
 import DishPairings from './DishPairings';
 import Contact from './Contact';
 import Header from './Header';
+import WineRecommendation from './WineRecommendation';
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
             <Route exact path="/" component={WinePairings} />
             <Route path="/winesearch" component={WinePairings} />
             <Route path="/dishsearch" component={DishPairings} />
+            <Route path="/winerecommendation" component={WineRecommendation} />
             <Route path="/contact" component={Contact} />
           </Switch>
         </div>
