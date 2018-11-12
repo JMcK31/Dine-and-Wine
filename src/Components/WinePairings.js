@@ -64,13 +64,10 @@ class WinePairings extends Component {
       });
     }
    
-
-  render() {
+    render() {
    const wines = this.state.pairedWines.map(wine =>
     <li>{wine}</li>
    );
-
-  //  const recommendation = this.state.productMatches.map(pair => <li>{pair}</li>);
       return ( 
           <div className="App">
             <div>
@@ -101,9 +98,9 @@ class WinePairings extends Component {
               <ul>
                 {this.state.productMatches.map(match => 
                   <div>
-                    <li>Suggestion: {match.title}</li>
+                    <li>Suggestion: <a href={match.link} alt=''>{match.title}</a></li>
                     <li>Score: {match.score}</li>
-                    <li><img src={match.imageUrl} alt='' href={match.link}/></li>
+                    <li><img src={match.imageUrl} alt=''/></li>
                     <li>{match.link}</li>
                     <li>Price: {match.price}</li>
                   </div>
@@ -113,7 +110,5 @@ class WinePairings extends Component {
       );
     }
   }
-  
-
 
 export default WinePairings;

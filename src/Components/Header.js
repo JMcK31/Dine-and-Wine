@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import {
   Navbar,
   Nav,
@@ -11,19 +11,19 @@ import {
 const Header = () => (
   <div>
     <Navbar color="light" light expand="md">
-      <Navbar.Brand><Link to="/">Wine And Dine</Link></Navbar.Brand>
+      <Navbar.Brand><NavLink to="/">Wine And Dine</NavLink></Navbar.Brand>
       <Nav className="ml-auto" navbar>
         <NavItem>
-          <Link to="/winesearch">Wine Pairings</Link>
+          <NavLink to="/winesearch">Wine Pairings</NavLink>
         </NavItem>
         <NavItem>
-          <Link to="/dishsearch">Dish Pairings</Link>
+          <NavLink to="/dishsearch">Dish Pairings</NavLink>
         </NavItem>
         <NavItem>
-          <Link to="/winerecommendation">Varietal Recommendation</Link>
+          <NavLink to="/winerecommendation">Varietal Recommendation</NavLink>
         </NavItem>
         <NavItem>
-          <Link to ='/Contact' activeStyle={{ background: 'tomato'}}>Contact</Link>
+          <NavLink to ="/Contact" activeStyle={{ color:'white', backgroundColor: 'red', borderRadius: '1'}}>Contact</NavLink>
         </NavItem>
       </Nav>
     </Navbar>
