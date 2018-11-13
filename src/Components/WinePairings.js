@@ -65,13 +65,13 @@ class WinePairings extends Component {
     }
    
     render() {
-   const wines = this.state.pairedWines.map(wine =>
-    <li>{wine}</li>
-   );
+      const wines = this.state.pairedWines.map(wine =>
+        <li>{wine}</li>
+      );
       return ( 
           <div className="App">
             <div>
-            <Label><h2>Find a Wine to Match your Meal</h2></Label>
+            <Label><h5>Find a Wine to Match your Meal</h5></Label>
             <Form inline className='searchBar'>
               <FormGroup>
                 <FormControl 
@@ -86,8 +86,8 @@ class WinePairings extends Component {
             </Form>
             
             </div>
-              <div className="wineList">
-                <ul>
+              <div className="">
+                <ul className="winePairing">
                   {wines}
                 </ul>
               </div>             
@@ -98,13 +98,20 @@ class WinePairings extends Component {
               <ul>
                 {this.state.productMatches.map(match => 
                   <div>
-                    <li>Suggestion: <a href={match.link} alt=''>{match.title}</a></li>
+                    <a href={match.link}><li>{match.title}</li></a>
+                    <li>Average Price: {match.price}</li>
                     <li>Score: {match.score}</li>
-                    <li><img src={match.imageUrl} alt=''/></li>
-                    <li>{match.link}</li>
-                    <li>Price: {match.price}</li>
+                    <li></li>
                   </div>
-                )}
+                  )}
+              </ul>
+              <ul>
+                {this.state.productMatches.map(match =>
+                  <div>
+                    <li><img src={match.imageUrl} alt={match.title}/></li>
+                    <li>{match.description}</li>
+                  </div>
+                )};
               </ul>
           </div>
       );

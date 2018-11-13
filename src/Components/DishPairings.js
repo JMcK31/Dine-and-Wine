@@ -54,7 +54,7 @@ class DishPairings extends Component {
       return ( 
           <div className="App">
             <div>
-              <Label><h2>Find a Meal to Match your Wine!</h2></Label>
+              <Label><h5>Find a Meal to Match your Wine!</h5></Label>
               <Form inline className='searchBar'>
                 <FormGroup>
                   <FormControl 

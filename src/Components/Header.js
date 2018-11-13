@@ -11,8 +11,13 @@ import {
 const Header = () => (
   <div>
     <Navbar color="light" light expand="md">
-      <Navbar.Brand><NavLink to="/">Wine And Dine</NavLink></Navbar.Brand>
-      <Nav className="ml-auto" navbar>
+      <Navbar.Header> 
+        <Navbar.Brand>
+          <NavLink to="/">Wine And Dine</NavLink>
+        </Navbar.Brand>  
+      </Navbar.Header>
+      <Nav className="ml-auto navbar" navbar>
+        <div>
         <NavItem>
           <NavLink to="/winesearch">Wine Pairings</NavLink>
         </NavItem>
@@ -22,13 +27,14 @@ const Header = () => (
         <NavItem>
           <NavLink to="/winerecommendation">Varietal Recommendation</NavLink>
         </NavItem>
-        <NavItem>
-          <NavLink to ="/Contact" activeStyle={{ color:'white', backgroundColor: 'red', borderRadius: '1'}}>Contact</NavLink>
-        </NavItem>
+        </div>
       </Nav>
-    </Navbar>
+    </Navbar>;
     <Jumbotron>
-      <h1>Dine and Wine</h1>
+      <div className="headerTitle">
+        <h1>Dine and Wine</h1>
+        <p className="lead">Pair food and wine</p>
+      </div>
     </Jumbotron>
   </div>
 );

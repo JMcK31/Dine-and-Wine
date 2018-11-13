@@ -4,11 +4,7 @@ body {
   font-family: "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-  
-  color: white;
-  font-weight: 650;
-
-  background-image: url(https://images.unsplash.com/photo-1538414779948-6e0fd9cb6790?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c782211f66254fb7d218119d3c5c1c03&auto=format&fit=crop&w=1355&q=80);
+  background-image: url(https://images.unsplash.com/photo-1516541196182-6bdb0516ed27?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ccdbaaf7bb352c17aaf967cf09c1285c&auto=format&fit=crop&w=934&q=80);
   background-size: cover;
   /* background: linear-gradient(to right, rgb(253, 249, 244), rgb(236, 219, 188)); */
   -webkit-font-smoothing: antialiased;
@@ -16,7 +12,7 @@ body {
 }
 
 h1,h2 {
-  color: white;
+  color: black;
 }
 
 code {
@@ -29,20 +25,21 @@ code {
 }
 
 /* Styles for Header*/
-
-.header {
-  min-height: 100vh;
+.navbar {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.headerTitle {
+  padding: 1rem;
 }
 
 /*Styles for Search */
 
 .searchBar {
   justify-content: center;
+  width: 66.66%;
 }
 
 .form-inline .form-control {
@@ -64,4 +61,12 @@ ul .wineList {
 .not-found {
   padding: 1em 2em;
   text-align: center;
+}
+
+
+@media (min-width: 768px) {
+
+.headerTitle {
+  padding-left: 10rem;
+}
 }
