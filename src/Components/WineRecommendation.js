@@ -49,7 +49,7 @@ render() {
      return ( 
           <div className="App">
             <div>
-            <Label><h2>Search a Varietal for a Recommendation</h2></Label>
+            <Label><h5>Search a Varietal for a Recommendation</h5></Label>
             <Form inline className='searchBar'>
               <FormGroup>
                 <FormControl 
@@ -67,13 +67,12 @@ render() {
               <ul>
                 {this.state.recommendedWines.map(match => 
                   <div>
-                    <li>Suggestion: {match.title}</li>
-                    <li>Price: {match.price}</li>
+                    <a href={match.link}><li><strong>{match.title}</strong></li></a>
+                    <li>Average Price: {match.price}</li>    
+                    <li>Average Rating: {match.averageRating}</li>
+                    <li>Score: {match.score}</li>
+                    <a href={match.link}><li className="wpPairingImg"><img src={match.imageUrl} alt=''/></li></a>
                     <li>{match.description}</li>
-                    <li>{match.averageRating}</li>
-                    <li>{match.score}</li>
-                    <li><img src={match.imageUrl} alt='' href={match.link}/></li>
-                    <li>{match.link}</li>
                   </div>
                 )}
               </ul>

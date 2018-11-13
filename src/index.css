@@ -1,5 +1,5 @@
 body {
-  margin: 0;
+  margin: auto;
   padding: 0;
   font-family: "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -25,6 +25,18 @@ code {
 }
 
 /* Styles for Header*/
+
+.jumbotronImg {
+  background-image: url("./img/headerImg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.navBarLinks {
+  color: black;
+}
+
 .navbar {
   display: flex;
   flex-direction: row;
@@ -39,7 +51,6 @@ code {
 
 .searchBar {
   justify-content: center;
-  width: 66.66%;
 }
 
 .form-inline .form-control {
@@ -50,10 +61,34 @@ ul {
   list-style-type: none;
 }
 
-ul .wineList {
+/* Wine Pairings Page */
+
+.wpContainer {
+  display: flex;  
+  flex: wrap;
+  justify-content: center;
+  border: 1px solid black;
+  padding: 1em;
+  width: 80%
+  
+}
+
+.winePairings {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
+}
+.winePairings li {
+  margin: 10px;
+}
+
+.wpPairingImg {
+ box-shadow: 1px 2px 0px 0px hsl(210, 2%, 75%);
+}
+
+.wpPairingImg hover {
+  opacity: .8;
 }
 
 /* notFound Component  */

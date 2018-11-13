@@ -70,7 +70,7 @@ class WinePairings extends Component {
       );
       return ( 
           <div className="App">
-            <div>
+            <div className="wpContainer">
             <Label><h5>Find a Wine to Match your Meal</h5></Label>
             <Form inline className='searchBar'>
               <FormGroup>
@@ -84,16 +84,20 @@ class WinePairings extends Component {
                 Search
               </Button>
             </Form>
-            
             </div>
-              <div className="">
-                <ul className="winePairing">
+            {/* make a component */}
+            <div className="wpContainer">
+              <div>
+                <ul className="winePairings">
                   {wines}
                 </ul>
-              </div>             
+              </div> 
+              <div className="pairingText">
               <p> 
                 {this.state.pairingText}
               </p>
+              </div>
+            </div>   
 
               <ul>
                 {this.state.productMatches.map(match => 
@@ -108,10 +112,10 @@ class WinePairings extends Component {
               <ul>
                 {this.state.productMatches.map(match =>
                   <div>
-                    <li><img src={match.imageUrl} alt={match.title}/></li>
+                    <li className="wpPairingImg"><img src={match.imageUrl} alt={match.title}/></li>
                     <li>{match.description}</li>
                   </div>
-                )};
+                )};  
               </ul>
           </div>
       );
