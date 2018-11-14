@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import {
   Label,
+  Col,
   Form,
   FormGroup,
   FormControl,
   Button,
+  Row
 } from 'react-bootstrap';
 import axios from 'axios';
 
@@ -70,23 +72,25 @@ class WinePairings extends Component {
       );
       return ( 
           <div className="App">
-            <div className="wpContainer">
-            <Label><h5>Find a Wine to Match your Meal</h5></Label>
-            <Form inline className='searchBar'>
-              <FormGroup>
-                <FormControl 
-                  type='search' 
-                  value={this.state.searchValue}
-                  placeholder='search for a pairing...' 
-                  onChange={this.searchChange} />
-              </FormGroup>
-              <Button type='submit' onClick={this.performSearch}> 
-                Search
-              </Button>
-            </Form>
-            </div>
+            <Row>
+              <Col  xs={12} md={6} lg={6} xl={6}>
+                <Label><h5>Find a Wine to Match your Meal</h5></Label>
+                <Form inline className='searchBar'>
+                  <FormGroup>
+                    <FormControl 
+                      type='search' 
+                      value={this.state.searchValue}
+                      placeholder='search for a pairing...' 
+                      onChange={this.searchChange} />
+                  </FormGroup>
+                  <Button type='submit' onClick={this.performSearch}> 
+                    Search
+                  </Button>
+                </Form>
+              </Col>
+            </Row>
             {/* make a component */}
-            <div className="wpContainer">
+            <div colclassName="wpContainer">
               <div>
                 <ul className="winePairings">
                   {wines}

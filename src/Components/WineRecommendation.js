@@ -64,18 +64,20 @@ render() {
             </Form>
             
             </div>
-              <ul>
-                {this.state.recommendedWines.map(match => 
-                  <div>
-                    <a href={match.link}><li><strong>{match.title}</strong></li></a>
-                    <li>Average Price: {match.price}</li>    
-                    <li>Average Rating: {match.averageRating}</li>
-                    <li>Score: {match.score}</li>
-                    <a href={match.link}><li className="wpPairingImg"><img src={match.imageUrl} alt=''/></li></a>
-                    <li>{match.description}</li>
-                  </div>
-                )}
-              </ul>
+             
+                  <ul>
+                    {this.state.recommendedWines.map(match => 
+                      <div>
+                        <a href={match.link}><li><strong>{match.title}</strong></li></a>
+                        <li>Average Price: {match.price}</li>    
+                        <li>Average Rating: {match.averageRating}</li>
+                        <li>Score: {match.score}</li>
+                        <a href={match.link}><li className="wpPairingImg"><img src={match.imageUrl} alt=''/></li></a>
+                        <li>{match.description}</li>
+                      </div>
+                    )}
+                  </ul>
+       
           </div>
       );
     }
