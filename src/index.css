@@ -4,6 +4,7 @@ body {
   font-family: "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
+  color: black;
   background-image: url(https://images.unsplash.com/photo-1516541196182-6bdb0516ed27?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ccdbaaf7bb352c17aaf967cf09c1285c&auto=format&fit=crop&w=934&q=80);
   background-size: cover;
   /* background: linear-gradient(to right, rgb(253, 249, 244), rgb(236, 219, 188)); */
@@ -11,9 +12,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1,h2 {
-  color: black;
-}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -24,6 +23,11 @@ code {
   text-align: center;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
+
 /* Styles for Header*/
 
 .jumbotronImg {
@@ -33,15 +37,22 @@ code {
   background-position: center;
 }
 
-.navBarLinks {
-  color: black;
+.navbar-header a {
+  color: #993536;
+  background-color: transparent;
+  font-weight: 500;
 }
 
+.navBarLinks li a {
+  color: #993536;
+  font-weight: 500;
+}
+/* 
 .navbar {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-}
+} */
 
 .headerTitle {
   padding: 1rem;
