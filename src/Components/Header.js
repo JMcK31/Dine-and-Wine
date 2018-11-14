@@ -11,12 +11,12 @@ import {
 const Header = () => (
   <div>
     <Navbar light expand="md">
-      <Navbar.Header> 
+      <Navbar.Header>
         <Navbar.Brand>
           <NavLink to="/">Wine And Dine</NavLink>
-        </Navbar.Brand>  
+        </Navbar.Brand>
       </Navbar.Header>
-      
+
       <Nav className="ml-auto" navbar>
         <div className="navBarLinks">
         <NavItem>
@@ -33,8 +33,8 @@ const Header = () => (
     </Navbar>
     <Jumbotron className="jumbotronImg">
       <div className="headerTitle">
-        <h1>Dine and Wine</h1>
-        <p className="lead">Pair food and wine</p>
+        <h1 className="mainHead">Dine and Wine</h1>
+        <h2 className="lead subHead">Pair food and wine</h2>
       </div>
     </Jumbotron>
   </div>
