@@ -17,16 +17,16 @@ const Header = () => (
         </Navbar.Brand>  
       </Navbar.Header>
       
-      <Nav className="ml-auto navBarLinks" navbar>
-        <div>
+      <Nav className="ml-auto" navbar>
+        <div className="navBarLinks">
         <NavItem>
-          <NavLink to="/winesearch"  activeStyle={{background: 'grey', color: 'white'}}>Wine Pairings</NavLink>
+          <NavLink to="/winesearch"  activeStyle={{background: 'grey', color: 'white', padding: '1px'}}>Wine Pairings</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to="/dishsearch"  activeStyle={{background: 'grey', color: 'white'}}>Dish Pairings</NavLink>
+          <NavLink to="/dishsearch"  activeStyle={{background: 'grey', color: 'white', padding:'1px'}}>Dish Pairings</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to="/winerecommendation" activeStyle={{background: 'grey', color: 'white'}}>Varietal Recommendation</NavLink>
+          <NavLink to="/winerecommendation" activeStyle={{background: 'grey', color: 'white', padding: '1px' }}>Varietal Recommendation</NavLink>
         </NavItem>
         </div>
       </Nav>
