@@ -36,6 +36,7 @@ a:hover {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+
 }
 
 .navbar-header a {
@@ -48,7 +49,26 @@ a:hover {
   color: #993536;
   font-weight: 500;
 }
-/* 
+
+.headerTitle {
+  background-color: white;
+  padding: 10px;
+  opacity: .75;
+}
+
+.mainHead {
+  font-family: 'Pacifico', cursive;
+  font-size: 3em;
+}
+
+.subHead {
+  font-family: 'Roboto', sans-serif;
+  font-size: 2em;
+}
+
+
+
+/*
 
 
 
@@ -62,20 +82,28 @@ a:hover {
   width: 25rem;
 }
 
-ul { 
+ul {
   list-style-type: none;
 }
 
 /* Wine Pairings Page */
 
+.searchBox {
+  justify-content: center;
+}
+
+.searchButton {
+  margin: 5px;
+}
+
 .wpContainer {
-  display: flex;  
+  display: flex;
   flex-direction: row;
   justify-content: center;
   border: 1px solid black;
   padding: 1em;
 
-  
+
 }
 
 .winePairings {
