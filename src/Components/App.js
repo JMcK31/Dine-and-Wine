@@ -17,10 +17,6 @@ class App extends Component {
             <Route path="/winesearch" component={WinePairings} />
             <Route path="/dishsearch" component={DishPairings} />
             <Route path="/winerecommendation" component={WineRecommendation} />
-<<<<<<< HEAD
-
-=======
->>>>>>> b04146a92a56ba38f7a8c05c57a9dc287d1baa96
             <Route component={NotFound} />
           </Switch>
         </div>

@@ -68,8 +68,12 @@ a:hover {
 
 
 
-/*
+/*NotFound*/
 
+.broken {
+  margin: auto;
+  padding: 2rem;
+}
 
 
 /*Styles for Search */
