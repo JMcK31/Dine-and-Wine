@@ -5,6 +5,9 @@ import {
   FormGroup,
   FormControl,
   Button,
+  Grid,
+  Row,
+  Col
 } from 'react-bootstrap';
 import axios from 'axios';
 
@@ -43,28 +46,35 @@ class WineRecommendation extends Component {
         console.log('Error fetching and parsing data', error);
       });
     }
-   
+
+
 
 render() { 
      return ( 
           <div className="App">
-            <div>
-            <Label><h5>Search a Varietal for a Recommendation</h5></Label>
-            <Form inline className='searchBar'>
-              <FormGroup>
-                <FormControl 
-                  type='search' 
-                  value={this.state.searchValue}
-                  placeholder='search for a pairing...' 
-                  onChange={this.searchChange} />
-              </FormGroup>
-              <Button type='submit' onClick={this.performSearch}> 
-                Search
-              </Button>
-            </Form>
-            
-            </div>
-             
+            <Grid>
+              <Row className="show-grid">
+                <Col xs={11} md={6} lg={6} xl={6}>
+                  <Label><h5>Search for a Varietal Suggestion</h5></Label>
+                  <Form inline className='searchBar'>
+                    <FormGroup>
+                      <FormControl 
+                        type='search' 
+                        value={this.state.searchValue}
+                        placeholder='search for a pairing...' 
+                        onChange={this.searchChange} />
+                    </FormGroup>
+                    <Button type='submit' onClick={this.performSearch}> 
+                      Search
+                    </Button>
+                  </Form>
+                </Col>
+              </Row>
+            </Grid> 
+              <Grid>
+                <Row className="show-grid">
+                  <Col xs={11} md={8} lg={6}>
+                  {/* add padding margins, container? */}
                   <ul>
                     {this.state.recommendedWines.map(match => 
                       <div>
@@ -77,7 +87,9 @@ render() {
                       </div>
                     )}
                   </ul>
-       
+                </Col>
+              </Row>             
+            </Grid>
           </div>
       );
     }

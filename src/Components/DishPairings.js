@@ -5,6 +5,9 @@ import {
   FormGroup,
   FormControl,
   Button,
+  Grid,
+  Row,
+  Col
 } from 'react-bootstrap';
 import axios from 'axios';
 
@@ -52,29 +55,37 @@ class DishPairings extends Component {
   
       return ( 
           <div className="App">
-            <div>
-              <Label><h5>Find a Meal to Match your Wine!</h5></Label>
-              <Form inline className='searchBar'>
-                <FormGroup>
-                  <FormControl 
-                    type='search' 
-                    value={this.state.searchValue}
-                    placeholder='search for a pairing...' 
-                    onChange={this.searchChange} />
-                </FormGroup>
-                <Button type='submit' onClick={this.performSearch}> 
-                  Search
-                </Button>
-              </Form>
-            </div>
-              <div> 
-                <p> 
-                  {this.state.text}
-                </p>
-                <p>
-                  {this.state.pairings}
-                </p>
-              </div> 
+            <Grid>
+              <Row className="show-grid">
+                <Col xs={11} md={6} lg={6} xl={6}>
+                  <Label><h5>Find a Wine to Match your Meal</h5></Label>
+                  <Form inline className='searchBar'>
+                    <FormGroup>
+                      <FormControl 
+                        type='search' 
+                        value={this.state.searchValue}
+                        placeholder='search for a pairing...' 
+                        onChange={this.searchChange} />
+                    </FormGroup>
+                    <Button type='submit' onClick={this.performSearch}> 
+                      Search
+                    </Button>
+                  </Form>
+                </Col>
+              </Row>
+            </Grid>
+              <Grid>
+                <Row className="show-grid">
+                  <Col xs={11} md={8} lg={6}>
+                    <p> 
+                      {this.state.text}
+                    </p>
+                    <p>
+                      {this.state.pairings}
+                    </p>
+                  </Col>
+                </Row>             
+              </Grid>
           </div>
       );
     }

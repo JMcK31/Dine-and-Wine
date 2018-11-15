@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import {
   Label,
-  Col,
   Form,
   FormGroup,
   FormControl,
   Button,
-  Row
+  Grid,
+  Row,
+  Col
 } from 'react-bootstrap';
 import axios from 'axios';
 
@@ -72,55 +73,59 @@ class WinePairings extends Component {
       );
       return ( 
           <div className="App">
-            <Row>
-              <Col  xs={12} md={6} lg={6} xl={6}>
-                <Label><h5>Find a Wine to Match your Meal</h5></Label>
-                <Form inline className='searchBar'>
-                  <FormGroup>
-                    <FormControl 
-                      type='search' 
-                      value={this.state.searchValue}
-                      placeholder='search for a pairing...' 
-                      onChange={this.searchChange} />
-                  </FormGroup>
-                  <Button type='submit' onClick={this.performSearch}> 
-                    Search
-                  </Button>
-                </Form>
-              </Col>
-            </Row>
+            <Grid>
+              <Row className="show-grid">
+                <Col xs={11} md={6} lg={6} xl={6}>
+                  <Label><h5>Find a Wine to Match your Meal</h5></Label>
+                  <Form inline className='searchBar'>
+                    <FormGroup>
+                      <FormControl 
+                        type='search' 
+                        value={this.state.searchValue}
+                        placeholder='search for a pairing...' 
+                        onChange={this.searchChange} />
+                    </FormGroup>
+                    <Button type='submit' onClick={this.performSearch}> 
+                      Search
+                    </Button>
+                  </Form>
+                </Col>
+              </Row>
+            </Grid>
             {/* make a component */}
-            <div colclassName="wpContainer">
-              <div>
+          <Grid>
+            <Row className="show-grid">
+              <Col xs={11} md={8} lg={6}>
                 <ul className="winePairings">
-                  {wines}
+                  <li>{wines}</li>
                 </ul>
-              </div> 
-              <div className="pairingText">
-              <p> 
-                {this.state.pairingText}
-              </p>
-              </div>
-            </div>   
+                <div className="pairingText">
+                  <p> 
+                    {this.state.pairingText}
+                  </p>
+                </div> 
 
-              <ul>
-                {this.state.productMatches.map(match => 
-                  <div>
-                    <a href={match.link}><li>{match.title}</li></a>
-                    <li>Average Price: {match.price}</li>
-                    <li>Score: {match.score}</li>
-                    <li></li>
-                  </div>
-                  )}
-              </ul>
-              <ul>
-                {this.state.productMatches.map(match =>
-                  <div>
-                    <li className="wpPairingImg"><img src={match.imageUrl} alt={match.title}/></li>
-                    <li>{match.description}</li>
-                  </div>
-                )};  
-              </ul>
+                  <ul>
+                    {this.state.productMatches.map(match => 
+                      <div>
+                        <a href={match.link}><li>{match.title}</li></a>
+                        <li>Average Price: {match.price}</li>
+                        <li>Score: {match.score}</li>
+                        <li></li>
+                      </div>
+                      )}
+                  </ul>
+                  <ul>
+                    {this.state.productMatches.map(match =>
+                      <div>
+                        <li className="wpPairingImg"><img src={match.imageUrl} alt={match.title}/></li>
+                        <li>{match.description}</li>
+                      </div>
+                    )};  
+                  </ul>
+                </Col>
+              </Row>             
+            </Grid>
           </div>
       );
     }
