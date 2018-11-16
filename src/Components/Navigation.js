@@ -9,28 +9,26 @@ import {
 
 const Navigation = () => (
   <div>
-    <Navbar default collapseOnSelect>
+  <Navbar light='true' expand="md">
       <Navbar.Header>
         <Navbar.Brand>
           <NavLink to="/">Wine And Dine</NavLink>
-        <Navbar.Toggle />
         </Navbar.Brand>
       </Navbar.Header>
-      <Navbar.Collapse>
+
       <Nav className="ml-auto" navbar>
         <div className="navBarLinks">
-          <NavItem>
-            <NavLink to="/winesearch"  activeStyle={{background: 'grey', color: 'white', padding: '1px'}}>Wine Pairings</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to="/dishsearch"  activeStyle={{background: 'grey', color: 'white', padding:'1px'}}>Dish Pairings</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to="/winerecommendation" activeStyle={{background: 'grey', color: 'white', padding: '1px' }}>Varietal Recommendation</NavLink>
-          </NavItem>
+        <NavItem>
+          <NavLink to="/winesearch"  activeStyle={{background: 'grey', color: 'white', padding: '1px'}}>Wine Pairings</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to="/dishsearch"  activeStyle={{background: 'grey', color: 'white', padding:'1px'}}>Dish Pairings</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to="/winerecommendation" activeStyle={{background: 'grey', color: 'white', padding: '1px' }}>Varietal Recommendation</NavLink>
+        </NavItem>
         </div>
       </Nav>
-      </Navbar.Collapse>
     </Navbar>
   </div>
 );

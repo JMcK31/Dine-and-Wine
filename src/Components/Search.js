@@ -7,7 +7,7 @@
  } from 'react-bootstrap';
  
 const Search = ({value, change, submit, placeholder}) => (
-  <Form inline className='searchBar'>
+  <Form inline className='main-content searchBar'>
     <FormGroup>
       <FormControl 
         type='search' 

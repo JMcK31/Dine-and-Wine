@@ -51,7 +51,7 @@ class WineRecommendation extends Component {
 
 render() { 
      return ( 
-          <div className="App">
+          <div className="mainContent">
             <Grid>
               <Row className="show-grid">
                 <Col xs={11} md={6} lg={6} xl={6}>
@@ -77,14 +77,16 @@ render() {
                   {/* add padding margins, container? */}
                   <ul>
                     {this.state.recommendedWines.map(match => 
-                      <div>
-                        <a href={match.link}><li><strong>{match.title}</strong></li></a>
-                        <li>Average Price: {match.price}</li>    
-                        <li>Average Rating: {match.averageRating}</li>
-                        <li>Score: {match.score}</li>
-                        <a href={match.link}><li className="wpPairingImg"><img src={match.imageUrl} alt=''/></li></a>
-                        <li>{match.description}</li>
-                      </div>
+                      <li key={match.title}>
+                        <ul>
+                          <a href={match.link}><li><strong>{match.title}</strong></li></a>
+                          <li>Average Price: {match.price}</li>    
+                          <li>Average Rating: {match.averageRating}</li>
+                          <li>Score: {match.score}</li>
+                          <a href={match.link}><li className="wpPairingImg"><img src={match.imageUrl} alt=''/></li></a>
+                          <li>{match.description}</li>
+                        </ul>
+                      </li>
                     )}
                   </ul>
                 </Col>

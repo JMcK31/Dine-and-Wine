@@ -13,22 +13,19 @@ body {
   justify-content: center;
 }
 
-
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
-
-
-.App {
-  text-align: center;
 }
 
 a:hover {
   text-decoration: none;
 }
 
+.mainContent {
+  display: flex;
+  justify-content: center;
+}
 
 /* Styles for Header*/
 
@@ -37,7 +34,6 @@ a:hover {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-
 }
 
 .navbar-header a {
@@ -66,8 +62,6 @@ a:hover {
   font-family: 'Roboto', sans-serif;
   font-size: 2em;
 }
-
-
 
 /*NotFound*/
 
@@ -107,8 +101,6 @@ ul {
   justify-content: center;
   border: 1px solid black;
   padding: 1em;
-
-
 }
 
 .winePairings {
