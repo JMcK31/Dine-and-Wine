@@ -10,3 +10,5 @@ The application uses the Spoonacular API to search for three different endpoints
  - Pair a Wine with a food item or cuisine entered in the search bar
  - Search for a varietal Recommendation. Enter a wine varietal in the search
 
+
+Kudos to Amy Talbot for her help with the Typography and header
