@@ -11,37 +11,22 @@ import {
 } from 'react-bootstrap';
 import axios from 'axios';
 
- 
+ // This is the Wine Pairings component //
+
 class WinePairings extends Component {
   constructor(props) {
     super(props);
       this.state = {
         searchValue: '',
-          pairedWines: [ 
-            'red ', 
-            'white ',
-            'sparkling'
-            ],
-          pairingText: (
-            [], 
-            'These are some great wines to pair with your food'
-            ),
-            productMatches: [
-            {
-              title: 'TEST',
-              description: 'Suggested wine description',
-              price: '$50',
-              score: '100',
-              imageUrl: 'https://fillmurray.com/g/200/300',
-              link: 'https://www.fillmurray.com/'     
-            }
-          ]
+          pairedWines: [],
+          pairingText: [],
+          productMatches: []
         };
       }
 
 
   componentdidMount() {
-    this.performSearch();
+    this.performSearch()
   }
 
   searchChange = e => {
@@ -60,73 +45,75 @@ class WinePairings extends Component {
           pairedWines: response.data.pairedWines, 
           pairingText: response.data.pairingText,
           productMatches: response.data.productMatches
-         });  
+         })  
         })
       .catch(error => {
         console.log('Error fetching and parsing data', error);
       });
     }
    
+    
     render() {
+      // Map over paired wines to seperate returned wines into an object //
       const wines = this.state.pairedWines.map(wine =>
         <li>{wine}</li>
       );
       return ( 
-          <div className="App">
-            <Grid>
-              <Row className="show-grid">
-                <Col xs={11} md={6} lg={6} xl={6}>
-                  <Label><h5>Find a Wine to Match your Meal</h5></Label>
-                  <Form inline className='searchBar'>
-                    <FormGroup>
-                      <FormControl 
-                        type='search' 
-                        value={this.state.searchValue}
-                        placeholder='search for a pairing...' 
-                        onChange={this.searchChange} />
-                    </FormGroup>
-                    <Button type='submit' onClick={this.performSearch}> 
-                      Search
-                    </Button>
-                  </Form>
-                </Col>
-              </Row>
-            </Grid>
-            {/* make a component */}
+        <div className="App">
           <Grid>
             <Row className="show-grid">
-              <Col xs={11} md={8} lg={6}>
-                <ul className="winePairings">
-                  <li>{wines}</li>
-                </ul>
-                <div className="pairingText">
-                  <p> 
-                    {this.state.pairingText}
-                  </p>
-                </div> 
+              <Col xs={11} md={6} lg={6} xl={6}>
+                <Label inline className="searchLbl">Pair a wine with your Meal or Cuisine</Label>
+                <Form inline className='searchBar'>
+                  <FormGroup>
+                    <FormControl 
+                      type='search' 
+                      value={this.state.searchValue}
+                      placeholder='e.g. Italian or Halibut ..' 
+                      onChange={this.searchChange} />
+                  </FormGroup>
+                  <Button type='submit' onClick={this.performSearch}> 
+                    Search
+                  </Button>
+                </Form>
+              </Col>
+            </Row>
+          </Grid>
+          {/* make a component */}
+        <Grid>
+          <Row className="show-grid">
+            <Col xs={11} md={8} lg={6}>
+              <ul className="winePairings">
+                <li>{wines}</li>
+              </ul>
+              <div className="pairingText">
+                <p> 
+                  {this.state.pairingText}
+                </p>
+              </div> 
 
-                  <ul>
-                    {this.state.productMatches.map(match => 
-                      <div>
-                        <a href={match.link}><li>{match.title}</li></a>
-                        <li>Average Price: {match.price}</li>
-                        <li>Score: {match.score}</li>
-                        <li></li>
-                      </div>
-                      )}
-                  </ul>
-                  <ul>
-                    {this.state.productMatches.map(match =>
-                      <div>
-                        <li className="wpPairingImg"><img src={match.imageUrl} alt={match.title}/></li>
-                        <li>{match.description}</li>
-                      </div>
-                    )};  
-                  </ul>
-                </Col>
-              </Row>             
-            </Grid>
-          </div>
+                <ul>
+                  {this.state.productMatches.map(match => 
+                    <div>
+                      <a href={match.link}><li>{match.title}</li></a>
+                      <li>Average Price: {match.price}</li>
+                      <li>Score: {match.score}</li>
+                      <li></li>
+                    </div>
+                    )}
+                </ul>
+                <ul>
+                  {this.state.productMatches.map(match =>
+                    <div>
+                      <li className="wpPairingImg"><img src={match.imageUrl} alt={match.title}/></li>
+                      <li>{match.description}</li>
+                    </div>
+                  )}  
+                </ul>
+              </Col>
+            </Row>             
+          </Grid>
+        </div>
       );
     }
   }

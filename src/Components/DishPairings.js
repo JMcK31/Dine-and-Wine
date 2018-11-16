@@ -10,9 +10,10 @@ import {
   Col
 } from 'react-bootstrap';
 import axios from 'axios';
-import Search from "./Search"
 
- 
+ // This is the Dish Pairings Component // 
+
+
 class DishPairings extends Component {
   constructor(props) {
     super(props);
@@ -51,41 +52,52 @@ class DishPairings extends Component {
       });
     }
    
-
   render() {
-  
-      return ( 
-          <div className="App">
-            <Grid>
-              <Row className="show-grid">
-                <Col xs={11} md={6} lg={6} xl={6}>
-                  <Label><h5>Find a Wine to Match your Meal</h5></Label>
-                    <Search 
-                      value={this.state.searchValue}
-                      placeholder='search for a pairing...' 
-                      onChange={this.searchChange} 
-                      submit = {this.performSearch}
-                      />
-                </Col>
-              </Row>
-            </Grid>
-              <Grid>
-                <Row className="show-grid">
-                  <Col xs={11} md={8} lg={6}>
-                  {/* need to style below, add padding bg? container? */}
-                    <p> 
-                      {this.state.text}
-                    </p>
-                    <p>
-                      {this.state.pairings}
-                    </p>
-                  </Col>
-                </Row>             
-              </Grid>
-          </div>
-      );
-    }
+    const food = this.state.pairings.map(food =>
+      <li>{food}</li>
+      // map over food componenet pull pairings from data and display in ul // 
+    );
+    return ( 
+      <div className="App">
+        <Grid>
+          <Row className="show-grid">
+            <Col>
+              <Label inline className="searchLbl">Find a Meal to Match a Wine</Label>
+              <Form inline className='searchBar'>
+                <FormGroup>
+                  <FormControl 
+                    type='search' 
+                    value={this.state.searchValue}
+                    placeholder='e.g. Chardonnay...' 
+                    onChange={this.searchChange} />
+                </FormGroup>
+                <Button type='submit' onClick={this.performSearch}> 
+                  Search
+                </Button>
+              </Form>
+            </Col>
+          </Row>
+        </Grid>
+          <Grid>
+            <Row className="show-grid">
+              <Col xs={11} md={8} lg={6}>
+                <div className="bodyContent">
+                <div className="dishPairings">
+                  <p> 
+                    {this.state.text}
+                  </p>
+                  <ul className="food">
+                    <li>{food}</li>
+                  </ul>
+                </div>
+                </div>
+              </Col>
+            </Row>             
+          </Grid>
+      </div>
+    );
   }
+}
   
 
 

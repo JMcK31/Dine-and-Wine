@@ -7,6 +7,8 @@ import DishPairings from './DishPairings';
 import WineRecommendation from './WineRecommendation';
 import NotFound from './NotFound';
 
+// Components are imported into App.js, App.js is the Top-Parent Component //
+
 class App extends Component {
   render() {
     return (
@@ -15,7 +17,7 @@ class App extends Component {
           <Navigation />
           <Header />
           <Switch>
-            <Route exact path="/" component={WinePairings} />
+            <Route exact path="/" component={WineRecommendation} />
             <Route path="/winesearch" component={WinePairings} />
             <Route path="/dishsearch" component={DishPairings} />
             <Route path="/winerecommendation" component={WineRecommendation} />

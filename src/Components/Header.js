@@ -1,7 +1,7 @@
 import React from 'react';
 import {Jumbotron } from 'react-bootstrap';
 
-
+// Stateless Header Component //
 const Header = () => (
   <div>
     <Jumbotron className="jumbotronImg">

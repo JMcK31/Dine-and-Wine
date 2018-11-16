@@ -6,7 +6,7 @@ import {
   NavItem
 } from 'react-bootstrap';
 
-
+// Navbar connects links to Browser Router on App.js //
 const Navigation = () => (
   <div>
   <Navbar light='true' expand="md">

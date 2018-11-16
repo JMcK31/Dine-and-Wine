@@ -4,14 +4,16 @@ import {
   Form,
   FormGroup,
   FormControl,
-  Button,
+  Button, 
   Grid,
   Row,
   Col
 } from 'react-bootstrap';
 import axios from 'axios';
 
- 
+ // This is the Wine Recommendation component //
+
+
 class WineRecommendation extends Component {
   constructor(props) {
     super(props);
@@ -30,6 +32,7 @@ class WineRecommendation extends Component {
     this.setState({searchValue: e.target.value})
   }
 
+  // Super Secure method of Extracting Data from the Spoonacular Api below //
   performSearch = (e) => {
     e.preventDefault();
     axios
@@ -47,52 +50,49 @@ class WineRecommendation extends Component {
       });
     }
 
-
+// Render the Component to the page //  
 
 render() { 
      return ( 
-          <div className="mainContent">
+        <div className="App">
+          <Grid>
+            <Row className="show-grid">
+              <Col xs={11} md={6} lg={6} xl={6}>
+                <Label inline className="searchLbl">Search for a Varietal Recommendation</Label>
+                <Form inline className='searchBar'>
+                  <FormGroup>
+                    <FormControl 
+                      type='search' 
+                      value={this.state.searchValue}
+                      placeholder='e.g. Malbec...' 
+                      onChange={this.searchChange} />
+                  </FormGroup>
+                  <Button type='submit' onClick={this.performSearch}> 
+                    Search
+                  </Button>
+                </Form>
+              </Col>
+            </Row>
+          </Grid> 
             <Grid>
-              <Row className="show-grid">
-                <Col xs={11} md={6} lg={6} xl={6}>
-                  <Label><h5>Search for a wine suggestion ex. Shiraz..</h5></Label>
-                  <Form inline className='searchBar'>
-                    <FormGroup>
-                      <FormControl 
-                        type='search' 
-                        value={this.state.searchValue}
-                        placeholder='search for a pairing...' 
-                        onChange={this.searchChange} />
-                    </FormGroup>
-                    <Button type='submit' onClick={this.performSearch}> 
-                      Search
-                    </Button>
-                  </Form>
-                </Col>
-              </Row>
-            </Grid> 
-              <Grid>
-                <Row className="show-grid">
-                  <Col xs={11} md={8} lg={6}>
-                  {/* add padding margins, container? */}
-                  <ul>
-                    {this.state.recommendedWines.map(match => 
-                      <li key={match.title}>
-                        <ul>
-                          <a href={match.link}><li><strong>{match.title}</strong></li></a>
-                          <li>Average Price: {match.price}</li>    
-                          <li>Average Rating: {match.averageRating}</li>
-                          <li>Score: {match.score}</li>
-                          <a href={match.link}><li className="wpPairingImg"><img src={match.imageUrl} alt=''/></li></a>
-                          <li>{match.description}</li>
-                        </ul>
-                      </li>
-                    )}
-                  </ul>
-                </Col>
-              </Row>             
-            </Grid>
-          </div>
+              <Row className="show-grid recWinesBody">
+                <Col xs={11} md={8} lg={6}>
+                <ul>
+                  {this.state.recommendedWines.map(match => 
+                    <div>
+                      <a href={match.link}><li><strong>{match.title}</strong></li></a>
+                      <li className="wineRecFont">Average Price: {match.price}</li>    
+                      <li>Average Rating: {match.averageRating}</li>
+                      <li>Score: {match.score}</li>
+                      <a href={match.link}><li className="wpPairingImg"><img src={match.imageUrl} alt=''/></li></a>
+                      <li>{match.description}</li>
+                    </div>
+                  )}
+                </ul>
+              </Col>
+            </Row>             
+          </Grid>
+        </div>
       );
     }
   }
