@@ -55,7 +55,7 @@ render() {
             <Grid>
               <Row className="show-grid">
                 <Col xs={11} md={6} lg={6} xl={6}>
-                  <Label><h5>Search for a Varietal Suggestion</h5></Label>
+                  <Label><h5>Search for a wine suggestion ex. Shiraz..</h5></Label>
                   <Form inline className='searchBar'>
                     <FormGroup>
                       <FormControl 

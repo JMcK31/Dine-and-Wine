@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Navigation from './Navigation';
+import Header from './Header';
 import WinePairings from './WinePairings';
 import DishPairings from './DishPairings';
-import Header from './Header';
 import WineRecommendation from './WineRecommendation';
 import NotFound from './NotFound';
 
@@ -11,6 +12,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
+          <Navigation />
           <Header />
           <Switch>
             <Route exact path="/" component={WinePairings} />

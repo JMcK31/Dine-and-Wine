@@ -10,6 +10,7 @@ import {
   Col
 } from 'react-bootstrap';
 import axios from 'axios';
+import Search from "./Search"
 
  
 class DishPairings extends Component {
@@ -59,24 +60,19 @@ class DishPairings extends Component {
               <Row className="show-grid">
                 <Col xs={11} md={6} lg={6} xl={6}>
                   <Label><h5>Find a Wine to Match your Meal</h5></Label>
-                  <Form inline className='searchBar'>
-                    <FormGroup>
-                      <FormControl 
-                        type='search' 
-                        value={this.state.searchValue}
-                        placeholder='search for a pairing...' 
-                        onChange={this.searchChange} />
-                    </FormGroup>
-                    <Button type='submit' onClick={this.performSearch}> 
-                      Search
-                    </Button>
-                  </Form>
+                    <Search 
+                      value={this.state.searchValue}
+                      placeholder='search for a pairing...' 
+                      onChange={this.searchChange} 
+                      submit = {this.performSearch}
+                      />
                 </Col>
               </Row>
             </Grid>
               <Grid>
                 <Row className="show-grid">
                   <Col xs={11} md={8} lg={6}>
+                  {/* need to style below, add padding bg? container? */}
                     <p> 
                       {this.state.text}
                     </p>

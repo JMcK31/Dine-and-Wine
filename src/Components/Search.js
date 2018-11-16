@@ -6,16 +6,16 @@
    Button,
  } from 'react-bootstrap';
  
-const Search = () => (
+const Search = ({value, change, submit, placeholder}) => (
   <Form inline className='searchBar'>
     <FormGroup>
       <FormControl 
         type='search' 
-        value={this.state.searchValue}
-        placeholder='search for a pairing...' 
-        onChange={this.searchChange} />
+        value={value}
+        placeholder={placeholder} 
+        onChange={change} />
     </FormGroup>
-    <Button type='submit' onClick={this.performSearch}> 
+    <Button type='submit' onClick={submit}> 
       Search
     </Button>
   </Form>
