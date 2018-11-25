@@ -54,7 +54,7 @@ class DishPairings extends Component {
    
   render() {
     const food = this.state.pairings.map(food =>
-      <li>{food}</li>
+      <li key={food.id}>{food}</li>
       // map over food componenet pull pairings from data and display in ul // 
     );
     return ( 
@@ -87,7 +87,7 @@ class DishPairings extends Component {
                     {this.state.text}
                   </p>
                   <ul className="food">
-                    <li>{food}</li>
+                    {food}
                   </ul>
                 </div>
                 </div>
