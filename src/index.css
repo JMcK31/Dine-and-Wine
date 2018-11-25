@@ -66,7 +66,9 @@ p {
   font-weight: 500;
 }
 
-.navBarLinks li a {
+.navBarLinks a {
+  display: inline-flex;
+  padding-left: 20px;
   color: #993536;
   font-weight: 500;
 }

@@ -94,7 +94,7 @@ class WinePairings extends Component {
 
                 <ul>
                   {this.state.productMatches.map(match => 
-                    <div>
+                    <div key={match.id}>
                       <a href={match.link}><li>{match.title}</li></a>
                       <li>Average Price: {match.price}</li>
                       <li>Score: {match.score}</li>
@@ -104,7 +104,7 @@ class WinePairings extends Component {
                 </ul>
                 <ul>
                   {this.state.productMatches.map(match =>
-                    <div>
+                    <div key={match.id}>
                       <li className="wpPairingImg"><img src={match.imageUrl} alt={match.title}/></li>
                       <li>{match.description}</li>
                     </div>
