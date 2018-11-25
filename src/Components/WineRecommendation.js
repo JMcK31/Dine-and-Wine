@@ -79,7 +79,7 @@ render() {
                 <Col xs={11} md={8} lg={6}>
                 <ul>
                   {this.state.recommendedWines.map(match => 
-                    <div>
+                    <div key={match.id}>
                       <a href={match.link}><li><strong>{match.title}</strong></li></a>
                       <li className="wineRecFont">Average Price: {match.price}</li>    
                       <li>Average Rating: {match.averageRating}</li>
