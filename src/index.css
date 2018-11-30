@@ -133,6 +133,15 @@ p {
 
 /* Wine Recommendations */
 
+.wineRecContainer ul {
+  display: grid;
+  grid-template-columns: 3fr;
+}
+
+.wineRecLi li {
+  margin: 30px;
+}
+
 .recWinesBody ul {
   margin-top: 30px;
 }

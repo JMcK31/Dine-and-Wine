@@ -57,7 +57,7 @@ render() {
         <div className="App">
           <Grid>
             <Row className="show-grid">
-              <Col xs={11} md={6} lg={6} xl={6}>
+              <Col xs={11} md={6} lg={6}>
                 <Label inline className="searchLbl">Search for a Varietal Recommendation</Label>
                 <Form inline className='searchBar'>
                   <FormGroup>
@@ -74,9 +74,10 @@ render() {
               </Col>
             </Row>
           </Grid> 
-            <Grid>
+            {/* <Grid>
               <Row className="show-grid recWinesBody">
-                <Col xs={11} md={8} lg={6}>
+                <Col xs={11} md={8} lg={6} className="wineRecContainer"> */}
+                <div className="wineRecContainer">
                 <ul>
                   {this.state.recommendedWines.map(match => 
                     <div key={match.id}>
@@ -89,9 +90,10 @@ render() {
                     </div>
                   )}
                 </ul>
-              </Col>
+                </div>
+              {/* </Col>
             </Row>             
-          </Grid>
+          </Grid> */}
         </div>
       );
     }

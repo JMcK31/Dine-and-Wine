@@ -13,6 +13,7 @@ import axios from 'axios';
 
  // This is the Dish Pairings Component // 
 
+const apiKey = {'X-Mashape-Key': 'ZJyTOCf5oumshDvTwSFk11paKhp9p1Ry2SsjsnigTi3aFLLBlX'}
 
 class DishPairings extends Component {
   constructor(props) {
@@ -34,12 +35,13 @@ class DishPairings extends Component {
     this.setState({searchValue: e.target.value})
   }
 
+
+
   performSearch = (e) => {
     e.preventDefault();
     axios
-      .get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/wine/dishes?wine=${this.state.searchValue}`, {
-      headers: {'X-Mashape-Key': 'ZJyTOCf5oumshDvTwSFk11paKhp9p1Ry2SsjsnigTi3aFLLBlX'},
-    })
+      .get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/wine/dishes?wine=${this.state.searchValue} {headers: ${apiKey}}`
+    )
       .then(response => {
         console.log(response)
         this.setState({ 
