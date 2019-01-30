@@ -7,6 +7,7 @@ import DishPairings from './DishPairings';
 import WineRecommendation from './WineRecommendation';
 import NotFound from './NotFound';
 
+console.log(process.env.REACT_APP_WINE_API_KEY)
 // Components are imported into App.js, App.js is the Top-Parent Component //
 
 class App extends Component {

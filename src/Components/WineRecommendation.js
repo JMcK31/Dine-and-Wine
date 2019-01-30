@@ -78,7 +78,7 @@ render() {
               <Row className="show-grid recWinesBody">
                 <Col xs={11} md={8} lg={6} className="wineRecContainer"> */}
                 <div className="wineRecContainer">
-                <ul>
+                <ul className="wineRecLi">
                   {this.state.recommendedWines.map(match => 
                     <div key={match.id}>
                       <a href={match.link}><li><strong>{match.title}</strong></li></a>
