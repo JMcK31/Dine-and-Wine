@@ -25,7 +25,7 @@ class WinePairings extends Component {
       }
 
 
-  componentdidMount() {
+  componentDidMount() {
     this.performSearch()
   }
 

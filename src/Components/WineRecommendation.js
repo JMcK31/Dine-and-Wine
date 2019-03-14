@@ -24,7 +24,7 @@ class WineRecommendation extends Component {
       }
 
 
-  componentdidMount() {
+  componentDidMount() {
     this.performSearch();
   }
 

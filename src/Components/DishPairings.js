@@ -27,7 +27,7 @@ class DishPairings extends Component {
       
 
 
-  componentdidMount() {
+  componentDidMount() {
     this.performSearch();
   }
 
